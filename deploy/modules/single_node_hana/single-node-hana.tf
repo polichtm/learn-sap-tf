@@ -3,7 +3,6 @@ terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      # version = "~> 1.30.1"
       version = "~> 2.0"
     }
   }
@@ -38,10 +37,4 @@ module "create_hdb" {
   storage_disk_sizes_gb     = var.storage_disk_sizes_gb
   vm_user                   = var.vm_user
   vm_size                   = var.vm_size
-}
-
-# Writes the configuration to a file, which will be used by the Ansible playbook for creating linux bastion host
-resource "local_file" "write-config-to-json" {
-  content  = "{az_vnet: \"${module.common_setup.vnet_name}\",az_subnet: \"hdb-subnet\",az_resource_group: \"${module.common_setup.resource_group_name}\", az_user: \"${var.vm_user}\", nsg_id: \"${module.common_setup.nsg_id}\", vm_size: \"${var.vm_size}\", az_public_key: \"${var.sshkey_path_public}\", ssh_private_key_file: \"${var.sshkey_path_private}\"}"
-  filename = "temp.json"
 }

@@ -86,7 +86,7 @@ variable "sap_instancenum" {
 }
 
 variable "sap_sid" {
-  default = "PV1"
+  default = "I20"
 }
 
 variable "sshkey_path_private" {

@@ -20,7 +20,7 @@ variable "sap_instancenum" {
 }
 
 variable "sap_sid" {
-  default = "PV1"
+  default = "I20"
 }
 
 locals {

@@ -21,7 +21,7 @@ sshkey_path_private = "~/.ssh/id_rsa"
 vm_user = "demouser"
 
 # SAP system ID (SID) to be used for HANA installation (example: "HN1")
-sap_sid = "HN1"
+sap_sid = "I20"
 
 # SAP instance number to be used for HANA installation (example: "01")
 sap_instancenum = "01"
