@@ -4,9 +4,6 @@ az_region = "westus2"
 # Name of resource group to deploy (example: "demo1")
 az_resource_group = "hana-sn-RG"
 
-# Unique domain name for easy VM access (example: "hana-on-azure1")
-az_domain_name = "hanasn071021"
-
 # Size of the VM to be deployed (example: "Standard_E8s_v3")
 # For HANA platform edition, a minimum of 32 GB of RAM is recommended
 vm_size = "Standard_D2s_v3"

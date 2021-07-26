@@ -18,9 +18,3 @@ output "nic_name" {
   value       = azurerm_network_interface.nic.name
 }
 
-#output "az_domain_name" {
-#  description = "The host name associated with the public IP that was created."
-#  value       = azurerm_public_ip.pip.domain_name_label
-#}
-
-
