@@ -5,9 +5,9 @@ variable "az_resource_group" {
 variable "az_region" {
 }
 
-variable "az_domain_name" {
-  description = "Prefix to be used in the domain name"
-}
+#variable "az_domain_name" {
+#  description = "Prefix to be used in the domain name"
+#}
 
 variable "availability_set_id" {
   description = "The id associated with the availability set to put this VM into."
