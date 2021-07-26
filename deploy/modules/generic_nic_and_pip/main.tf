@@ -1,4 +1,13 @@
 # Create public IPs
+
+resource "random_string" "pip-name" {
+  length  = 12
+  upper   = false
+  number  = true
+  lower   = true
+  special = false
+}
+
 resource "azurerm_public_ip" "pip" {
   name                         = "${var.name}-pip"
   location                     = var.az_region

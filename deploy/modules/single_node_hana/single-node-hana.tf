@@ -26,7 +26,8 @@ module "create_hdb" {
 
   az_resource_group         = module.common_setup.resource_group_name
   az_region                 = var.az_region
-  az_domain_name            = var.az_domain_name
+  # az_domain_name            = var.az_domain_name
+  az_domain_name            = "vm-${random_string.pip-name}"
   hdb_num                   = 0
   hana_subnet_id            = module.common_setup.vnet_subnets
   nsg_id                    = module.common_setup.nsg_id
