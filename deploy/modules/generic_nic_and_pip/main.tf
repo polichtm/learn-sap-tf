@@ -1,7 +1,7 @@
 # Create public IPs
 
 resource "random_string" "pipname" {
-  length  = 12
+  length  = 10
   upper   = false
   number  = true
   lower   = true
@@ -13,7 +13,7 @@ resource "azurerm_public_ip" "pip" {
   location                     = var.az_region
   resource_group_name          = var.az_resource_group
   allocation_method            = var.public_ip_allocation_type
-  domain_name_label            = "vm-${random_string.pipname.result}"
+  domain_name_label            = "hdb0${random_string.pipname.result}"
 
   idle_timeout_in_minutes = 30
 

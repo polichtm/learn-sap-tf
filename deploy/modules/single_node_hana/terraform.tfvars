@@ -15,7 +15,7 @@ sshkey_path_public = "~/.ssh/id_rsa.pub"
 sshkey_path_private = "~/.ssh/id_rsa"
 
 # OS user with sudo privileges to be deployed on VM (e.g. "demo")
-vm_user = "demouser"
+vm_user = "labuser"
 
 # SAP system ID (SID) to be used for HANA installation (example: "HN1")
 sap_sid = "I20"
