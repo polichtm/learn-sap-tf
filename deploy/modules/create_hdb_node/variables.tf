@@ -59,7 +59,7 @@ variable "vm_user" {
 }
 
 locals {
-  machine_name = "${lower(var.sap_sid)}-hdb${var.hdb_num}"
+  machine_name = "hdb${var.hdb_num}"
   vm_hdb_name  = "hdb${var.hdb_num}"
 }
 
