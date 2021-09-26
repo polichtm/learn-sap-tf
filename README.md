@@ -209,6 +209,13 @@ The terraform `show command` generates a readable output of a state or plan file
 
 1. Navigate to the Azure portal and sign in to the Azure subscription that you will be using in this lab with an account that has at least the Contributor role within the scope of that subscription.
 1. In the Azure portal, start a Bash session in Cloud Shell.
+1. In the Cloud Shell pane, from the Bash prompt, run the following to generate the SSH key pair that will be used to secure access to Linux Azure VMs deployed in this lab:
+
+    ```
+    ssh-keygen -t rsa -b 2048
+    ``` 
+
+1.  When prompted to specify the location of the file in which to save the key and to specify the passphrase protecting the content of the file, press the Enter key (three times). 
 1. From the Bash session, run the following command to remove any pre-existing directory containing a clone of the repo you'll be using in this lab:
 
    ```
@@ -260,7 +267,7 @@ The terraform `show command` generates a readable output of a state or plan file
 1. From the Bash session, run the following commands to download and extract the Terraform binary to the current directory:
 
    ```
-   curl -o https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+   curl -o terraform.zip https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
    unzip terraform.zip
    ```
 
@@ -1598,7 +1605,7 @@ The corresponding playbook resides in the dedicated **ansible** directory struct
 1. From the Bash session, run the following commands to download and extract the Terraform binary to the current directory:
 
    ```
-   curl -o https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+   curl -o terraform.zip https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
    unzip terraform.zip
    ```
 
