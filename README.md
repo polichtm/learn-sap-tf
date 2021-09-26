@@ -2203,7 +2203,176 @@ The corresponding playbook resides in the dedicated **ansible** directory struct
    terraform apply -auto-approve tfplan_tf_with_ansible
    ```   
 
-1. From the Bash session, examine the output generated during the deployment and verify that it includes that entry `Apply complete! Resources: 20 added, 0 changed, 0 destroyed`.
+1. From the Bash session, examine the output generated during the deployment and verify that it includes that entry `Apply complete! Resources: 20 added, 0 changed, 0 destroyed`:
+
+   ```
+   module.create_hdb.module.nic_and_pip_setup.random_string.pipname: Creating...
+   module.create_hdb.module.nic_and_pip_setup.random_string.pipname: Creation complete after 0s [id=w0q47begae]
+   module.common_setup.azurerm_resource_group.hana-resource-group: Creating...
+   module.common_setup.azurerm_resource_group.hana-resource-group: Creation complete after 1s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg]
+   module.common_setup.azurerm_virtual_network.vnet: Creating...
+   module.create_hdb.module.vm_and_disk_creation.random_id.randomId: Creating...
+   module.create_hdb.module.vm_and_disk_creation.random_id.randomId: Creation complete after 0s [id=GKKnzONvp3k]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_managed_disk.disk[0]: Creating...
+   module.create_hdb.module.vm_and_disk_creation.azurerm_managed_disk.disk[2]: Creating...
+   module.create_hdb.module.vm_and_disk_creation.azurerm_managed_disk.disk[1]: Creating...
+   module.common_setup.azurerm_network_security_group.sap_nsg: Creating...
+   module.create_hdb.module.nic_and_pip_setup.azurerm_public_ip.pip: Creating...
+   module.create_hdb.module.vm_and_disk_creation.azurerm_storage_account.bootdiagstorageaccount: Creating...
+   module.create_hdb.module.nic_and_pip_setup.azurerm_public_ip.pip: Creation complete after 4s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/publicIPAddresses/hdb0-pip]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_managed_disk.disk[0]: Creation complete after 5s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Compute/disks/hdb0-disk0]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_managed_disk.disk[1]: Creation complete after 5s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Compute/disks/hdb0-disk1]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_managed_disk.disk[2]: Creation complete after 5s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Compute/disks/hdb0-disk2]
+   module.common_setup.azurerm_virtual_network.vnet: Creation complete after 5s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/virtualNetworks/I20-vnet]
+   module.common_setup.azurerm_subnet.subnet: Creating...
+   module.common_setup.azurerm_network_security_group.sap_nsg: Creation complete after 6s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/networkSecurityGroups/I20-nsg]
+   module.common_setup.data.azurerm_network_security_group.nsg_info: Reading...
+   module.common_setup.azurerm_network_security_rule.hana-xsc-rules[1]: Creating...
+   module.common_setup.azurerm_network_security_rule.hana-xsc-rules[0]: Creating...
+   module.common_setup.data.azurerm_network_security_group.nsg_info: Read complete after 0s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/networkSecurityGroups/I20-nsg]
+   module.common_setup.azurerm_subnet.subnet: Creation complete after 5s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/virtualNetworks/I20-vnet/subnets/hdb-subnet]
+   module.common_setup.azurerm_subnet_network_security_group_association.subnet-nsg-association: Creating...
+   module.create_hdb.module.nic_and_pip_setup.azurerm_network_interface.nic: Creating...
+   module.create_hdb.module.vm_and_disk_creation.azurerm_storage_account.bootdiagstorageaccount: Still creating... [10s elapsed]
+   module.create_hdb.module.nic_and_pip_setup.azurerm_network_interface.nic: Creation complete after 3s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/networkInterfaces/hdb0-nic]
+   module.common_setup.azurerm_network_security_rule.hana-xsc-rules[1]: Still creating... [10s elapsed]
+   module.common_setup.azurerm_network_security_rule.hana-xsc-rules[0]: Still creating... [10s elapsed]
+   module.common_setup.azurerm_network_security_rule.hana-xsc-rules[0]: Creation complete after 11s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/networkSecurityGroups/I20-nsg/securityRules/XSC-HTTP]
+   module.common_setup.azurerm_subnet_network_security_group_association.subnet-nsg-association: Still creating... [10s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_storage_account.bootdiagstorageaccount: Still creating... [20s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_storage_account.bootdiagstorageaccount: Creation complete after 24s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Storage/storageAccounts/diag18a2a7cce36fa779]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Creating...
+   module.common_setup.azurerm_network_security_rule.hana-xsc-rules[1]: Still creating... [20s elapsed]
+   module.common_setup.azurerm_network_security_rule.hana-xsc-rules[1]: Creation complete after 22s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/networkSecurityGroups/I20-nsg/securityRules/XSC-HTTPS]
+   module.common_setup.azurerm_subnet_network_security_group_association.subnet-nsg-association: Still creating... [20s elapsed]
+   module.common_setup.azurerm_subnet_network_security_group_association.subnet-nsg-association: Creation complete after 23s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Network/virtualNetworks/I20-vnet/subnets/hdb-subnet]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Still creating... [10s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Still creating... [20s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Still creating... [30s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Still creating... [40s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Still creating... [50s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Still creating... [1m0s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Still creating... [1m10s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Still creating... [1m20s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine.vm: Creation complete after 1m20s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Compute/virtualMachines/hdb0]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[2]: Creating...
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[0]: Creating...
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Creating...
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[0]: Still creating... [10s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[2]: Still creating... [10s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [10s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[2]: Still creating... [20s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[0]: Still creating... [20s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [20s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[2]: Still creating... [30s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[0]: Still creating... [30s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [30s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[2]: Creation complete after 32s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Compute/virtualMachines/hdb0/dataDisks/hdb0-disk2]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[0]: Still creating... [40s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [40s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[0]: Still creating... [50s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [50s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[0]: Still creating... [1m0s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [1m0s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[0]: Creation complete after 1m4s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Compute/virtualMachines/hdb0/dataDisks/hdb0-disk0]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [1m10s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [1m20s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Still creating... [1m30s elapsed]
+   module.create_hdb.module.vm_and_disk_creation.azurerm_virtual_machine_data_disk_attachment.disk[1]: Creation complete after 1m37s [id=/subscriptions/c3d2ec23-6f0c-4592-b2a6-1b050d9cd2fe/resourceGroups/hana-sn-rg/providers/Microsoft.Compute/virtualMachines/hdb0/dataDisks/hdb0-disk1]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Creating...
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Provisioning with 'local-exec'...
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): Executing: ["/bin/sh" "-c" "    OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES \\\n    AZURE_RESOURCE_GROUPS=\"hana-sn-rg\" \\\n    ANSIBLE_HOST_KEY_CHECKING=\"False\" \\\n    ansible-playbook -u labuser \\\n    --private-key '~/.ssh/id_rsa' \\\n    --extra-vars=\"{ \\\n     \\\"url_hdbserver\\\": \\\"https://XXX\\\", \\\n     \\\"sap_sid\\\": \\\"I20\\\", \\\n     \\\"sap_instancenum\\\": \\\"01\\\", \\\n     \\\"pwd_os_sapadm\\\": \\\"XXX\\\", \\\n     \\\"pwd_os_sidadm\\\": \\\"XXX\\\", \\\n     \\\"pwd_db_system\\\": \\\"XXX\\\", \\\n     \\\"pwd_hacluster\\\": \\\"\\\", \\\n     \\\"hdb0_ip\\\": \\\"\\\", \\\n     \\\"hdb1_ip\\\": \\\"\\\", \\\n     \\\"use_hana2\\\": false, \\\n     \\\"hana1_db_mode\\\": \\\"multiple_containers\\\", \\\n     \\\"lb_frontend_ip\\\": \\\"\\\", \\\n     \\\"resource_group\\\": \\\"hana-sn-rg\\\", \\\n     \\\"url_xsa_runtime\\\": \\\"\\\", \\\n     \\\"url_di_core\\\": \\\"\\\", \\\n     \\\"url_sapui5\\\": \\\"\\\", \\\n     \\\"url_portal_services\\\": \\\"\\\", \\\n     \\\"url_xs_services\\\": \\\"\\\", \\\n     \\\"url_shine_xsa\\\": \\\"\\\", \\\n     \\\"url_xsa_hrtt\\\": \\\"\\\", \\\n     \\\"url_xsa_webide\\\": \\\"\\\", \\\n     \\\"url_xsa_mta\\\": \\\"\\\", \\\n     \\\"url_timeout\\\": \\\"30\\\", \\\n     \\\"url_retries_cnt\\\": \\\"10\\\", \\\n     \\\"url_retries_delay\\\": \\\"10\\\",\\\n     \\\"package_retries_cnt\\\": \\\"10\\\", \\\n     \\\"package_retries_delay\\\": \\\"10\\\", \\\n     \\\"pwd_db_xsaadmin\\\": \\\"XXX\\\", \\\n     \\\"pwd_db_tenant\\\": \\\"XXX\\\", \\\n     \\\"pwd_db_shine\\\": \\\"XXX\\\", \\\n     \\\"email_shine\\\": \\\"shine@myemailaddress.com\\\", \\\n     \\\"install_xsa\\\": false, \\\n  \\\"install_shine\\\": false, \\\n     \\\"install_cockpit\\\": false, \\\n     \\\"install_webide\\\": false, \\\n     \\\"url_cockpit\\\": \\\"\\\" }\" \\\n     -i '../../../ansible/azure_rm.py' ../../../ansible/single_node_playbook.yml\n"]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): [WARNING]: Invalid characters were found in group names but not replaced, use
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): -vvvv to see details
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): [WARNING]: Found both group and host with same name: hdb0
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): PLAY [hdb0] ********************************************************************
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [Gathering Facts] *********************************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Still creating... [10s elapsed]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): [WARNING]: Platform linux on host hdb0 is using the discovered Python
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): interpreter at /usr/bin/python, but future installation of another Python
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): interpreter could change the meaning of that path. See https://docs.ansible.com
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): /ansible/2.10/reference_appendices/interpreter_discovery.html for more
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): information.
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0]
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [imds-reg : Register with IMDS] *******************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0]
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): PLAY [hdb0] ********************************************************************
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [Gathering Facts] *********************************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0]
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [disk-setup : ensure storage management software is installed] ************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Still creating... [20s elapsed]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0] => (item=gptfdisk)
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0] => (item=sg3_utils)
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0] => (item=lvm2)
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [disk-setup : rescanning for new disks] ***********************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun0', 'value': 'vg_hana_data_I20'})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun1', 'value': 'vg_hana_log_I20'})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun2', 'value': 'vg_hana_shared'})
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [disk-setup : create disk partitions] *************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Still creating... [30s elapsed]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun0', 'value': 'vg_hana_data_I20'})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun1', 'value': 'vg_hana_log_I20'})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun2', 'value': 'vg_hana_shared'})
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [disk-setup : create or extend volumegroups] ******************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun0', 'value': 'vg_hana_data_I20'})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Still creating... [40s elapsed]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun1', 'value': 'vg_hana_log_I20'})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': '/dev/disk/azure/scsi1/lun2', 'value': 'vg_hana_shared'})
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [disk-setup : create logical volumes] *************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_shared', 'value': {'size': '100%FREE', 'vol': 'vg_hana_shared', 'mountpoint': '/hana/shared'}})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_data', 'value': {'size': '100%FREE', 'vol': 'vg_hana_data_I20', 'mountpoint': '/hana/data/I20'}})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_logs', 'value': {'size': '100%FREE', 'vol': 'vg_hana_log_I20', 'mountpoint': '/hana/log/I20'}})
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [disk-setup : create filesystems] *****************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Still creating... [50s elapsed]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_shared', 'value': {'size': '100%FREE', 'vol': 'vg_hana_shared', 'mountpoint': '/hana/shared'}})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_data', 'value': {'size': '100%FREE', 'vol': 'vg_hana_data_I20', 'mountpoint': '/hana/data/I20'}})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Still creating... [1m0s elapsed]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_logs', 'value': {'size': '100%FREE', 'vol': 'vg_hana_log_I20', 'mountpoint': '/hana/log/I20'}})
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [disk-setup : mount and make fstab entries] *******************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_shared', 'value': {'size': '100%FREE', 'vol': 'vg_hana_shared', 'mountpoint': '/hana/shared'}})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_data', 'value': {'size': '100%FREE', 'vol': 'vg_hana_data_I20', 'mountpoint': '/hana/data/I20'}})
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Still creating... [1m10s elapsed]
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): changed: [hdb0] => (item={'key': 'hana_logs', 'value': {'size': '100%FREE', 'vol': 'vg_hana_log_I20', 'mountpoint': '/hana/log/I20'}})
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [hotfix : Ensure DHCLIENT_SET_HOSTNAME is set to no] **********************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0]
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [hotfix : Ensure the correct hostnames are set on HANA VMs] ***************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0]
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): PLAY [hdb0] ********************************************************************
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [Gathering Facts] *********************************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0]
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): TASK [imds-reg : Register with IMDS] *******************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): ok: [hdb0]
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): PLAY RECAP *********************************************************************
+   module.configure_vm.null_resource.mount-disks-and-configure-hana (local-exec): hdb0                       : ok=14   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+   module.configure_vm.null_resource.mount-disks-and-configure-hana: Creation complete after 1m18s [id=7896714799678199754]
+
+   Apply complete! Resources: 20 added, 0 changed, 0 destroyed.
+
+   Outputs:
+
+   hdb_ip = "hdb0w0q47begae.westus2.cloudapp.azure.com"
+   hdb_vm_user = "labuser"
+   ```   
+
 1. In the output generated during the deployment, identify and record the value of the **hdb_ip** entry and note the name of the **hdb_vm_user** (which should be set to **labuser**).
 1. From the Bash session, run the following command to connect to the Azure VM (replace the `<hdb_ip>` placeholder with the value you identified in the previous step):
 
